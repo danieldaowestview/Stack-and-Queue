@@ -18,11 +18,10 @@ public class Queue<T> {
 
 	// remove and return the element at the beginning of the list
 	public T remove() {
-		for (int i = push.size() - 1; i > 1; i--) {
-			pop.push(push.pop());
-		}
 		if (pop.size() == 0) {
-			return null;
+			for (int i = push.size() - 1; i >= 0; i--) {
+				pop.push(push.pop());
+			}
 		}
 		return pop.pop();
 	}
@@ -36,16 +35,24 @@ public class Queue<T> {
 	// return a String representation of the list
 	// formatted as [el1, el2, el3, ..., elN]
 	public String toString() {
-		return "";
+		String res = "[";
+		for (int i = 0; i < pop.size(); i++) {
+			res += pop.pop() + ",";
+		}
+		res += "]";
+		return res;
 	}
 
 	/* return the # of elements in the queue */
 	public int size() {
-		return -1;
+		return push.size() + pop.size();
 	}
 
 	/* return true if the queue is empty, false otherwise */
 	public boolean empty() {
+		if (push.size() == 0 && pop.size() == 0) {
+			return true;
+		}
 		return false;
 	}
 

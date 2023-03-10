@@ -13,13 +13,14 @@ class QueueTester {
 
 	@Test
 	void testSize() {
-		Queue temp = new Queue(5);
-		temp.enqueue(temp);
+		Queue temp = new Queue();
 		assertEquals(0, temp.size());
 	}
 
-	void testEnqueue(){
-		temp.enqueue()
+	void testAdd(){
+		Queue temp = new Queue();
+		temp.add(T el);
+		assertEquals(1, temp.size());
 	}
 
 }
