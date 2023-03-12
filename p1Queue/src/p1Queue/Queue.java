@@ -1,14 +1,12 @@
 package p1Queue;
 
-//For this problem, you may assume you can use the Stack we started together in class
 public class Queue<T> {
 
 	/* to be completed */
 	// instance variables
 	Stack<T> pop;
 	Stack<T> push;
-	int data[] = { 1, 2, 3, 4, 5, 6 };
-
+	
 	/* to be completed */
 	// constructor
 	public Queue() {
@@ -18,8 +16,8 @@ public class Queue<T> {
 
 	// remove and return the element at the beginning of the list
 	public T remove() {
-		if (pop.size() == 0) {
-			for (int i = push.size() - 1; i >= 0; i--) {
+		if (pop.size() ==0) {
+			while(!push.empty()) {
 				pop.push(push.pop());
 			}
 		}
@@ -31,15 +29,36 @@ public class Queue<T> {
 		/* to be completed */
 		push.push(el);
 	}
-
 	// return a String representation of the list
 	// formatted as [el1, el2, el3, ..., elN]
 	public String toString() {
-		String res = "[";
-		for (int i = 0; i < pop.size(); i++) {
-			res += pop.pop() + ",";
+	    Stack<T> tempStack = new Stack<T>();
+		String res = "["; 
+		if(empty()){
+		    return null;
 		}
+		while(!pop.empty()){
+			T el = pop.pop();
+			res += el.toString() + ", ";
+			tempStack.push(el);
+		}
+		while(!tempStack.empty()){
+		    T el = tempStack.pop();
+		    pop.push(el);
+		}
+		
+		while(!push.empty()){
+			tempStack.push(push.pop());
+		}
+		while(!tempStack.empty()){
+		    T el = tempStack.pop();
+		    res += el.toString() + ", ";
+		    push.push(el);
+		}
+		
+		res = res.substring(0, res.length() - 2);
 		res += "]";
+
 		return res;
 	}
 

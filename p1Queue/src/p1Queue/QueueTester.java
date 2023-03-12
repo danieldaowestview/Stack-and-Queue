@@ -8,19 +8,41 @@ class QueueTester {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testSize() {
-		Queue temp = new Queue();
+		Queue<Integer> temp = new Queue<Integer>();
 		assertEquals(0, temp.size());
 	}
-
-	void testAdd(){
-		Queue temp = new Queue();
-		temp.add(T el);
+	@Test
+	void testAdd() {
+		Queue<Integer> temp = new Queue<Integer>();
+		temp.add(1);
+		temp.add(1);
+		temp.add(1);
+		assertEquals(3, temp.size());
+	}
+	@Test
+	void testToString() {
+		Queue<Integer> temp = new Queue<Integer>();
+		temp.add(1);
+		temp.add(2);
+		temp.add(3);
+		assertEquals("[1, 2, 3]", temp.toString());
+	}
+	@Test
+	void testEmpty() {
+		Queue<Integer> temp = new Queue<Integer>();
+		assertEquals(true, temp.empty());
+	}
+	@Test
+	void testRemove() {
+		Queue<Integer> temp = new Queue<Integer>();
+		temp.add(1);
+		temp.add(2);
+		temp.remove();
 		assertEquals(1, temp.size());
 	}
-
 }
